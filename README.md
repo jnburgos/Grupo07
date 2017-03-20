@@ -11,7 +11,7 @@
 ## Product Owner
 | Nombre | Github | Email |
 | :----- | :----- | :------- |
-| JAIME YAÑEZ | X | jsyanez@uc.cl  |
+| JAIME YAÑEZ | JaimePata | jsyanez@uc.cl  |
 
 ________________________
 
