@@ -4,9 +4,9 @@
 
 | Nombre | Github | Email |
 | :----- | :----- | :------- |
-| JAVIERA NATALIA BURGOS | X | jnburgos@uc.cl |
-| EDUARDO FELIPE GUERRA | X | eeguerra@uc.cl |
-| ANDREA MIJAL ROIZMAN | X | amroizman@uc.cl |
+| JAVIERA NATALIA BURGOS | jnburgos | jnburgos@uc.cl |
+| EDUARDO FELIPE GUERRA | eduguerra | eeguerra@uc.cl |
+| ANDREA MIJAL ROIZMAN | amroizman | amroizman@uc.cl |
 
 ## Product Owner
 | Nombre | Github | Email |
