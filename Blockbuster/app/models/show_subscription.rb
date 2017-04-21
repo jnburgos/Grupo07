@@ -1,0 +1,2 @@
+class ShowSubscription < ApplicationRecord
+end

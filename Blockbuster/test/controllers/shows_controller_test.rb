@@ -17,7 +17,7 @@ class ShowsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create show" do
     assert_difference('Show.count') do
-      post shows_url, params: { show: { actors: @show.actors, country: @show.country, genre: @show.genre, lenguage: @show.lenguage, numberOfSeasons: @show.numberOfSeasons, permission: @show.permission, rating: @show.rating, rating_n: @show.rating_n, subtitles: @show.subtitles, title: @show.title } }
+      post shows_url, params: { show: { actors: @show.actors, country: @show.country, genre: @show.genre, language: @show.language, numberOfSeasons: @show.numberOfSeasons, permission: @show.permission, rating: @show.rating, rating_n: @show.rating_n, subtitles: @show.subtitles, title: @show.title } }
     end
 
     assert_redirected_to show_url(Show.last)
@@ -34,7 +34,7 @@ class ShowsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update show" do
-    patch show_url(@show), params: { show: { actors: @show.actors, country: @show.country, genre: @show.genre, lenguage: @show.lenguage, numberOfSeasons: @show.numberOfSeasons, permission: @show.permission, rating: @show.rating, rating_n: @show.rating_n, subtitles: @show.subtitles, title: @show.title } }
+    patch show_url(@show), params: { show: { actors: @show.actors, country: @show.country, genre: @show.genre, language: @show.language, numberOfSeasons: @show.numberOfSeasons, permission: @show.permission, rating: @show.rating, rating_n: @show.rating_n, subtitles: @show.subtitles, title: @show.title } }
     assert_redirected_to show_url(@show)
   end
 

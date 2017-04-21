@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Title</th>
       <th>Show</th>
       <th>Year</th>
       <th colspan="3"></th>
@@ -14,6 +15,7 @@
   <tbody>
     <% @seasons.each do |season| %>
       <tr>
+        <td><%= season.title %></td>
         <td><%= season.show %></td>
         <td><%= season.year %></td>
         <td><%= link_to 'Show', season %></td>

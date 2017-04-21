@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   resources :show_subscriptions
   resources :news
-  resources :show_reviews
   resources :chapters
   resources :seasons
+  resources :show_reviews
   resources :chapter_views
   resources :shows
   resources :actors

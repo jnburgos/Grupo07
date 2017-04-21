@@ -2,20 +2,16 @@
 
 one:
   role: MyString
-  passwird: MyString
+  password: MyString
   email: MyString
   firstName: MyString
-  string: MyString
   lastName: MyString
-  facebooK: MyString
-  string: MyString
+  facebook: MyString
 
 two:
   role: MyString
-  passwird: MyString
+  password: MyString
   email: MyString
   firstName: MyString
-  string: MyString
   lastName: MyString
-  facebooK: MyString
-  string: MyString
+  facebook: MyString
