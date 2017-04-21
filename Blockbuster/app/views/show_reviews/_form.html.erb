@@ -1,0 +1,32 @@
+<%= form_for(show_review) do |f| %>
+  <% if show_review.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(show_review.errors.count, "error") %> prohibited this show_review from being saved:</h2>
+
+      <ul>
+      <% show_review.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :show %>
+    <%= f.text_field :show %>
+  </div>
+
+  <div class="field">
+    <%= f.label :user %>
+    <%= f.text_field :user %>
+  </div>
+
+  <div class="field">
+    <%= f.label :review %>
+    <%= f.text_field :review %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

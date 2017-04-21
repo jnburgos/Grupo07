@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Chapter Views</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Chapter</th>
+      <th>Review</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @chapter_views.each do |chapter_view| %>
+      <tr>
+        <td><%= chapter_view.user %></td>
+        <td><%= chapter_view.chapter %></td>
+        <td><%= chapter_view.review %></td>
+        <td><%= link_to 'Show', chapter_view %></td>
+        <td><%= link_to 'Edit', edit_chapter_view_path(chapter_view) %></td>
+        <td><%= link_to 'Destroy', chapter_view, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Chapter View', new_chapter_view_path %>

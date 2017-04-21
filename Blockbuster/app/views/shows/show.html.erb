@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @show.title %>
+</p>
+
+<p>
+  <strong>Genre:</strong>
+  <%= @show.genre %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @show.rating %>
+</p>
+
+<p>
+  <strong>Rating n:</strong>
+  <%= @show.rating_n %>
+</p>
+
+<p>
+  <strong>Permission:</strong>
+  <%= @show.permission %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @show.country %>
+</p>
+
+<p>
+  <strong>Lenguage:</strong>
+  <%= @show.lenguage %>
+</p>
+
+<p>
+  <strong>Subtitles:</strong>
+  <%= @show.subtitles %>
+</p>
+
+<p>
+  <strong>Actors:</strong>
+  <%= @show.actors %>
+</p>
+
+<p>
+  <strong>Numberofseasons:</strong>
+  <%= @show.numberOfSeasons %>
+</p>
+
+<%= link_to 'Edit', edit_show_path(@show) %> |
+<%= link_to 'Back', shows_path %>

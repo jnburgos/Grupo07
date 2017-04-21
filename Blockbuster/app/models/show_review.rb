@@ -1,0 +1,2 @@
+class ShowReview < ApplicationRecord
+end

@@ -1,0 +1,32 @@
+<%= form_for(chapter_view) do |f| %>
+  <% if chapter_view.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(chapter_view.errors.count, "error") %> prohibited this chapter_view from being saved:</h2>
+
+      <ul>
+      <% chapter_view.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user %>
+    <%= f.text_field :user %>
+  </div>
+
+  <div class="field">
+    <%= f.label :chapter %>
+    <%= f.text_field :chapter %>
+  </div>
+
+  <div class="field">
+    <%= f.label :review %>
+    <%= f.text_field :review %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
