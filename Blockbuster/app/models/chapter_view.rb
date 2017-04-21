@@ -1,2 +1,0 @@
-class ChapterView < ApplicationRecord
-end
