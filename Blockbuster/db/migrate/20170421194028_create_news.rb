@@ -3,7 +3,7 @@ class CreateNews < ActiveRecord::Migration[5.0]
     create_table :news do |t|
       t.string :show
       t.string :actor
-      t.dateTime :date
+      t.datetime :date
       t.string :title
       t.string :content
 

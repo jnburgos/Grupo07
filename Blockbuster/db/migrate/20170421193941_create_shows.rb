@@ -5,12 +5,12 @@ class CreateShows < ActiveRecord::Migration[5.0]
       t.string :genre
       t.float :rating
       t.float :rating_n
-      t.bool :permission
+      t.boolean :permission
       t.string :country
       t.string :language
       t.string :subtitles
       t.string :actors
-      t.int :numberOfSeasons
+      t.integer :numberOfSeasons
 
       t.timestamps
     end
