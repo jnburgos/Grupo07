@@ -5,6 +5,7 @@ class ShowsController < ApplicationController
   # GET /shows.json
   def index
     @shows = Show.all
+
   end
 
   # GET /shows/1
@@ -19,6 +20,11 @@ class ShowsController < ApplicationController
 
   # GET /shows/1/edit
   def edit
+  end
+
+  def add_subscription
+    #DARLE PARAMETROS USUARIO LOGEADO Y SERIE
+    #@subscription = ShowSubscription.create()
   end
 
   # POST /shows
