@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'welcome#index'
   # resources :sessions, only: [:new]
-  get 'welcome/index'
+  # get 'welcome/index'
 
   devise_for :users
 
