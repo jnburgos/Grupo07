@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   root 'welcome#index'
-  resources :sessions, only: [:new]
+  # resources :sessions, only: [:new]
   get 'welcome/index'
 
-  # devise_for :users
+  devise_for :users
+
+
   resources :show_subscriptions
   resources :news
   resources :chapters
