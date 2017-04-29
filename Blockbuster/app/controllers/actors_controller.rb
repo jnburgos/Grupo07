@@ -14,6 +14,7 @@ class ActorsController < ApplicationController
 
   # GET /actors/new
   def new
+    firewall()
     @actor = Actor.new
   end
 
@@ -24,15 +25,17 @@ class ActorsController < ApplicationController
   # POST /actors
   # POST /actors.json
   def create
-    @actor = Actor.new(actor_params)
+    if check_permission()
+      @actor = Actor.new(actor_params)
 
-    respond_to do |format|
-      if @actor.save
-        format.html { redirect_to @actor, notice: 'Actor was successfully created.' }
-        format.json { render :show, status: :created, location: @actor }
-      else
-        format.html { render :new }
-        format.json { render json: @actor.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @actor.save
+          format.html { redirect_to @actor, notice: 'Actor was successfully created.' }
+          format.json { render :show, status: :created, location: @actor }
+        else
+          format.html { render :new }
+          format.json { render json: @actor.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -54,14 +57,28 @@ class ActorsController < ApplicationController
   # DELETE /actors/1
   # DELETE /actors/1.json
   def destroy
-    @actor.destroy
-    respond_to do |format|
-      format.html { redirect_to actors_url, notice: 'Actor was successfully destroyed.' }
-      format.json { head :no_content }
+    if current_user.role == "Admin"
+      @actor.destroy
+      respond_to do |format|
+        format.html { redirect_to actors_url, notice: 'Actor was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 
   private
+    def firewall
+      if current_user.role != "Admin"
+        redirect_to :controller => 'actors', :action => 'index' 
+      end
+    end
+
+    def check_permission
+      if current_user.role == "Admin"
+        return true
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_actor
       @actor = Actor.find(params[:id])
@@ -71,4 +88,5 @@ class ActorsController < ApplicationController
     def actor_params
       params.require(:actor).permit(:name)
     end
+
 end

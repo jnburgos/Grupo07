@@ -20,6 +20,7 @@ class ShowsController < ApplicationController
 
   # GET /shows/1/edit
   def edit
+    firewall()
   end
 
   def add_subscription
@@ -30,15 +31,17 @@ class ShowsController < ApplicationController
   # POST /shows
   # POST /shows.json
   def create
-    @show = Show.new(show_params)
+    if check_permission()
+      @show = Show.new(show_params)
 
-    respond_to do |format|
-      if @show.save
-        format.html { redirect_to @show, notice: 'Show was successfully created.' }
-        format.json { render :show, status: :created, location: @show }
-      else
-        format.html { render :new }
-        format.json { render json: @show.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @show.save
+          format.html { redirect_to @show, notice: 'Show was successfully created.' }
+          format.json { render :show, status: :created, location: @show }
+        else
+          format.html { render :new }
+          format.json { render json: @show.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -46,13 +49,15 @@ class ShowsController < ApplicationController
   # PATCH/PUT /shows/1
   # PATCH/PUT /shows/1.json
   def update
-    respond_to do |format|
-      if @show.update(show_params)
-        format.html { redirect_to @show, notice: 'Show was successfully updated.' }
-        format.json { render :show, status: :ok, location: @show }
-      else
-        format.html { render :edit }
-        format.json { render json: @show.errors, status: :unprocessable_entity }
+    if check_permission()
+      respond_to do |format|
+        if @show.update(show_params)
+          format.html { redirect_to @show, notice: 'Show was successfully updated.' }
+          format.json { render :show, status: :ok, location: @show }
+        else
+          format.html { render :edit }
+          format.json { render json: @show.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -60,14 +65,29 @@ class ShowsController < ApplicationController
   # DELETE /shows/1
   # DELETE /shows/1.json
   def destroy
-    @show.destroy
-    respond_to do |format|
-      format.html { redirect_to shows_url, notice: 'Show was successfully destroyed.' }
-      format.json { head :no_content }
+    if check_permission()
+      @show.destroy
+      respond_to do |format|
+        format.html { redirect_to shows_url, notice: 'Show was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 
   private
+
+    def firewall
+      if current_user.role != "Admin"
+        redirect_to :controller => 'shows', :action => 'index'
+      end
+    end
+
+    def check_permission
+      if current_user.role == "Admin"
+        return true
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_show
       @show = Show.find(params[:id])
