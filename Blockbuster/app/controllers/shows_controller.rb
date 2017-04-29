@@ -23,10 +23,7 @@ class ShowsController < ApplicationController
     firewall()
   end
 
-  def add_subscription
-    #DARLE PARAMETROS USUARIO LOGEADO Y SERIE
-    #@subscription = ShowSubscription.create()
-  end
+
 
   # POST /shows
   # POST /shows.json
@@ -73,6 +70,8 @@ class ShowsController < ApplicationController
       end
     end
   end
+
+
 
   private
 

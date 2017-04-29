@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-
   resources :show_subscriptions
   resources :news
   resources :chapters
