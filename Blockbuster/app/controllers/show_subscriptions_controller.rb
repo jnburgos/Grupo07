@@ -14,7 +14,21 @@ class ShowSubscriptionsController < ApplicationController
 
   # GET /show_subscriptions/new
   def new
-    @show_subscription = ShowSubscription.new
+    # @show_subscription = ShowSubscription.new()
+
+    @show = Show.find(params[:show])
+
+    @show_subscription = ShowSubscription.new({:show => @show, :user => current_user})
+
+    respond_to do |format|
+      if @show_subscription.save
+        format.html { redirect_to @show_subscription, notice: 'Show subscription was successfully created.' }
+        format.json { render :show, status: :created, location: @show_subscription }
+      else
+        format.html { render :new }
+        format.json { render json: @show_subscription.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # GET /show_subscriptions/1/edit

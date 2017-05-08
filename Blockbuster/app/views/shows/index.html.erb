@@ -2,7 +2,24 @@
 <alert class="alert alert-info alert-full" ><%= notice %></alert>
 <% end %>
 
-<h1>Series</h1>
+<h1>Suscripciones</h1>
+
+<section class="grid">
+  <% current_user.subscriptions.each do |subscription| %>
+    <%= link_to "user" do %>
+      <h4>
+        <%= subscription.show.title %>
+        <span><br><%= subscription.show.genre %></span>
+      </h4>
+    <% end %>
+  <% end %>
+
+  <span style="display:block;clear:both;"></span>
+</section>
+
+<br><br>
+
+<h1>Todas las Series</h1>
 
 <section class="grid">
   <% @shows.each do |show| %>
@@ -13,14 +30,6 @@
       </h4>
     <% end %>
   <% end %>
-  <a href="/"></a>
-  <a href="/"></a>
-  <a href="/"></a>
-  <a href="/"></a>
-  <a href="/"></a>
-  <a href="/"></a>
-  <a href="/"></a>
-  <a href="/"></a>
 
   <span style="display:block;clear:both;"></span>
 </section>

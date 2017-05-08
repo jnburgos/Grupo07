@@ -1,5 +1,6 @@
 class ShowsController < ApplicationController
   before_action :set_show, only: [:show, :edit, :update, :destroy]
+  before_action :firewall, only: [:edit]
 
   # GET /shows
   # GET /shows.json
@@ -11,6 +12,9 @@ class ShowsController < ApplicationController
   # GET /shows/1
   # GET /shows/1.json
   def show
+    if params[:subscribe] == "1"
+      add_show
+    end
   end
 
   # GET /shows/new
@@ -20,10 +24,7 @@ class ShowsController < ApplicationController
 
   # GET /shows/1/edit
   def edit
-    firewall()
   end
-
-
 
   # POST /shows
   # POST /shows.json
@@ -57,6 +58,9 @@ class ShowsController < ApplicationController
         end
       end
     end
+
+
+
   end
 
   # DELETE /shows/1
@@ -90,6 +94,14 @@ class ShowsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_show
       @show = Show.find(params[:id])
+    end
+
+    def add_show
+      unless current_user.shows.include?(@show)
+        current_user.shows << @show
+        flash[:notice] = '¡Te has suscrito a ' + @show.title + '!'
+        redirect_to "shows"
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

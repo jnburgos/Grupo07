@@ -1,4 +1,6 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+<alert class="alert alert-info alert-full" ><%= notice %></alert>
+<% end %>
 
 <div class="center-content">
   <h1>
@@ -10,6 +12,7 @@
   <p class="show-subtitle">
     <%= @show.genre %> | <%= @show.country %> | <%= @show.language %> | <%= @show.numberOfSeasons %> temporadas
   </p>
+  <%= link_to "+ Añadir a mis series", {:controller => "shows", :action => "show", :subscribe => "1"}, class: "bright" %>
   <div class="show-image"></div>
   <p class="show-subtitle">
     Actores: <%= @show.actors %>
