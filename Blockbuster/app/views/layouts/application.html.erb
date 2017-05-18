@@ -31,7 +31,12 @@
       <%- if user_signed_in? && current_user.role == "Admin" %>
         <a href="/users">Usuarios</a>
       <% end -%>
-      <a href="/shows" class="pull-right">Buscar</a>
+      <!-- BUSCAR -->
+      <%= form_tag(shows_path, :method => "get") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Buscar" %>
+      <%= submit_tag "Buscar", :title => nil %>
+      
+      <% end %>
     </div>
     <main>
       <%= yield %>
