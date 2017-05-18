@@ -2,8 +2,8 @@
 <alert class="alert alert-info alert-full" ><%= notice %></alert>
 <% end %>
 
+<% if user_signed_in? %>
 <h1>Suscripciones</h1>
-
 <section class="grid">
   <% current_user.subscriptions.each do |subscription| %>
     <%= link_to "user" do %>
@@ -13,6 +13,7 @@
       </h4>
     <% end %>
   <% end %>
+<% end %>
 
   <span style="display:block;clear:both;"></span>
 </section>

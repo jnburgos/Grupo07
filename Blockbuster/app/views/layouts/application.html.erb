@@ -9,27 +9,30 @@
   </head>
 
   <body>
-    <% if user_signed_in?  %>
     <nav>
       <a href="/" class="logo">
         Blockbuster
-        <%- if current_user.role == "Admin" %>
+        <%- if user_signed_in? && current_user.role == "Admin" %>
         | Admin
         <% end -%>
       </a>
-      <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "pull-right" %>
+      <% if user_signed_in?  %>
+      <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, class: "pull-right" %>
       <a href="/users/edit" class="pull-right">Ajustes</a>
+      <% else %>
+      <%= link_to "Iniciar sesión", new_user_session_path, method: :get, class: "pull-right" %>
+      <%= link_to "Crear cuenta", new_user_registration_path, method: :get, class: "pull-right" %>
+      <% end %>
     </nav>
     <div class="subnav">
       <a href="/shows">Series</a>
       <a href="/actors">Actores</a>
       <a href="/news">Noticias</a>
-      <%- if current_user.role == "Admin" %>
+      <%- if user_signed_in? && current_user.role == "Admin" %>
         <a href="/users">Usuarios</a>
       <% end -%>
       <a href="/shows" class="pull-right">Buscar</a>
     </div>
-    <% end %>
     <main>
       <%= yield %>
     </main>
