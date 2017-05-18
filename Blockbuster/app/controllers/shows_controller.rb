@@ -4,9 +4,14 @@ class ShowsController < ApplicationController
 
   # GET /shows
   # GET /shows.json
+  #ordenar la busqueda quizas
   def index
     @shows = Show.all
-
+    if params[:search]
+      @shows = Show.search(params[:search])
+    else
+      @shows = Show.all
+    end
   end
 
   # GET /shows/1
