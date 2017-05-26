@@ -1,9 +1,26 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+<alert class="alert alert-info alert-full" ><%= notice %></alert>
+<% end %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @actor.name %>
-</p>
+<div class="center-content">
+  <h1>
+    <%= @actor.name %>
+  </h1>
+  <br><br>
+  <p class="show-subtitle">
+    Series en las que ha actuado:
+  </p>
+  <section class="grid grid-center">
+    <% @actor.shows.each do |show| %>
+      <%= link_to show do %>
+        <h4>
+          <%= show.title %>
+          <span><br><%= show.genre %></span>
+        </h4>
+      <% end %>
+    <% end %>
 
-<%= link_to 'Edit', edit_actor_path(@actor) %> |
-<%= link_to 'Back', actors_path %>
+    <span style="display:block;clear:both;"></span>
+  </section>
+
+</div>

@@ -2,11 +2,11 @@
 <alert class="alert alert-info alert-full" ><%= notice %></alert>
 <% end %>
 
-<% if user_signed_in? %>
+<% if user_signed_in? && !@searching%>
 <h1>Suscripciones</h1>
 <section class="grid">
   <% current_user.subscriptions.each do |subscription| %>
-    <%= link_to "user" do %>
+    <%= link_to subscription.show do %>
       <h4>
         <%= subscription.show.title %>
         <span><br><%= subscription.show.genre %></span>
@@ -20,7 +20,11 @@
 
 <br><br>
 
+<% if !@searching%>
 <h1>Todas las Series</h1>
+<% else %>
+<h1>Resultados de búsqueda: <%= params[:search] %></h1>
+<% end %>
 
 <section class="grid">
   <% @shows.each do |show| %>
@@ -68,7 +72,6 @@
         <td><%= show.country %></td>
         <td><%= show.language %></td>
         <td><%= show.subtitles %></td>
-        <td><%= show.actors %></td>
         <td><%= show.numberOfSeasons %></td>
         <td><%= link_to 'Edit', edit_show_path(show) %></td>
         <td><%= link_to 'Destroy', show, method: :delete, data: { confirm: 'Are you sure?' } %></td>

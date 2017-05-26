@@ -15,7 +15,7 @@
   <%= link_to "+ Añadir a mis series", {:controller => "shows", :action => "show", :subscribe => "1"}, class: "bright" %>
   <div class="show-image"></div>
   <p class="show-subtitle">
-    Actores: <%= @show.actors %>
+    Actores: <%= @show.actors.map {|a| a.name}.join(", ").strip() %>
   </p>
   <p class="show-subtitle">
     Subtítulos: <%= @show.subtitles %>

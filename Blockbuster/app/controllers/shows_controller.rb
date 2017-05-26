@@ -7,9 +7,12 @@ class ShowsController < ApplicationController
   #ordenar la busqueda quizas
   def index
     @shows = Show.all
-    if params[:search]
+    @searching = false
+    if params[:search] && params[:search] != ""
+      @searching = true
       @shows = Show.search(params[:search])
     else
+      @searching = false
       @shows = Show.all
     end
   end
@@ -25,6 +28,7 @@ class ShowsController < ApplicationController
   # GET /shows/new
   def new
     @show = Show.new
+    @actor = Actor.all
   end
 
   # GET /shows/1/edit

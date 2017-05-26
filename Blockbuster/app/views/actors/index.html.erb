@@ -1,6 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Actors</h1>
+<h1>Actores</h1>
+
+<section class="grid">
+  <% @actors.each do |actor| %>
+    <%= link_to actor do %>
+      <h4>
+        <%= actor.name %>
+      </h4>
+    <% end %>
+  <% end %>
+
+  <span style="display:block;clear:both;"></span>
+</section>
+
+
+
 
 <table>
   <thead>

@@ -90,6 +90,34 @@ nav a {
 	color: #5CB3FF;
 }
 
+.subnav > form {
+	display: inline-block;
+	float: right;
+}
+
+.subnav input[type="text"] {
+	padding: 5px 8px;
+	border: 2px solid #fff;
+	width: 216px;
+}
+
+.subnav input[type="text"]:focus {
+	outline: none;
+	border-color: #5CB3FF;
+}
+
+.subnav input[type="submit"] {
+	background-color: #5FC2FA;
+	color: #fff;
+	font-size: 14px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	-webkit-appearance: none;
+	border: none;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
 .pull-right {
 	float: right;
 }
@@ -212,6 +240,10 @@ section.grid > a {
 	color: #d9d9d9;
 }
 
+section.grid-center > a {
+	width: calc(50% - 6px);
+}
+
 section.grid > a:hover {
 	color: #fff;
 }
@@ -226,3 +258,5 @@ section.grid > a > h4 {
 section.grid > a > h4 span {
 	font-size: 70%;
 }
+
+

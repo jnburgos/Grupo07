@@ -2,7 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-form {
+form.main,
+.main-form form {
 	width: 400px;
 	max-width: 95%;
 	text-align: center;
@@ -14,24 +15,28 @@ form.center {
 	margin-top: 6%;
 }
 
-fieldset {
+form.main fieldset,
+.main-form form fieldset {
 	border: none;
 	text-align: left;
 }
 
-form input {
+form.main input,
+.main-form form input {
 	width: 100%;
 	padding: 7px;
 	font-size: 15px;
 	border: 1px solid #fff;
 }
 
-form input:focus {
+form.main input:focus,
+.main-form form input:focus {
 	outline: none;
 	border-color: #5FC2FA;
 }
 
-form input[type="submit"] {
+form.main input[type="submit"],
+.main-form form input[type="submit"]{
 	background-color: #5FC2FA;
 	color: #fff;
 	font-size: 14px;
@@ -44,6 +49,7 @@ form input[type="submit"] {
 	margin-top: 15px;
 }
 
-form > h2, h3, h4 {
+form.main > h2, h3, h4,
+.main-form form > h2, h3, h4 {
 	padding: 20px;
 }
