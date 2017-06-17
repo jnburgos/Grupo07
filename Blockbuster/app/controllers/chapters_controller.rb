@@ -1,5 +1,6 @@
 class ChaptersController < ApplicationController
   before_action :set_chapter, only: [:show, :edit, :update, :destroy]
+  before_action :set_season, only: [:new]
 
   # GET /chapters
   # GET /chapters.json
@@ -67,8 +68,16 @@ class ChaptersController < ApplicationController
       @chapter = Chapter.find(params[:id])
     end
 
+    def set_season
+      if (current_user.role == "Admin" and params[:season_id])
+        @season = Season.find(params[:season_id])
+      else
+        redirect_to :controller => 'shows', :action => 'index'
+      end
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def chapter_params
-      params.require(:chapter).permit(:length, :season)
+      params.require(:chapter).permit(:length, :season_id, :title)
     end
 end

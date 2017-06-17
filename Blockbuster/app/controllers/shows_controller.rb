@@ -109,12 +109,12 @@ class ShowsController < ApplicationController
       unless current_user.shows.include?(@show)
         current_user.shows << @show
         flash[:notice] = '¡Te has suscrito a ' + @show.title + '!'
-        redirect_to "shows"
+        redirect_to :controller => 'shows', :action => 'index'
       end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def show_params
-      params.require(:show).permit(:title, :genre, :rating, :rating_n, :permission, :country, :language, :subtitles, :actors, :numberOfSeasons)
+      params.require(:show).permit(:title, :genre, :rating, :rating_n, :permission, :country, :language, :subtitles, :actors, :numberOfSeasons, :image)
     end
 end

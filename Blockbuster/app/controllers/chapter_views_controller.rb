@@ -28,7 +28,7 @@ class ChapterViewsController < ApplicationController
 
     respond_to do |format|
       if @chapter_view.save
-        format.html { redirect_to @chapter_view, notice: 'Chapter view was successfully created.' }
+        format.html { redirect_to :controller => 'seasons', :action => 'show', :id => Season.find(Chapter.find(@chapter_view.chapter_id).season_id)}
         format.json { render :show, status: :created, location: @chapter_view }
       else
         format.html { render :new }
@@ -56,7 +56,7 @@ class ChapterViewsController < ApplicationController
   def destroy
     @chapter_view.destroy
     respond_to do |format|
-      format.html { redirect_to chapter_views_url, notice: 'Chapter view was successfully destroyed.' }
+      format.html { redirect_to :controller => 'seasons', :action => 'show', :id => Season.find(Chapter.find(@chapter_view.chapter_id).season_id)}
       format.json { head :no_content }
     end
   end
@@ -69,6 +69,6 @@ class ChapterViewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def chapter_view_params
-      params.require(:chapter_view).permit(:user, :chapter, :review)
+      params.require(:chapter_view).permit(:user_id, :chapter_id, :review)
     end
 end

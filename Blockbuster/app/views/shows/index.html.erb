@@ -6,11 +6,13 @@
 <h1>Suscripciones</h1>
 <section class="grid">
   <% current_user.subscriptions.each do |subscription| %>
-    <%= link_to subscription.show do %>
-      <h4>
-        <%= subscription.show.title %>
-        <span><br><%= subscription.show.genre %></span>
-      </h4>
+    <%= link_to subscription.show, :style => "background-image: url(#{subscription.show.image})" do %>
+      <div class="overlay">
+        <h4>
+          <%= subscription.show.title %>
+          <span><br><%= subscription.show.genre %></span>
+        </h4>
+      </div>
     <% end %>
   <% end %>
 <% end %>
@@ -28,11 +30,13 @@
 
 <section class="grid">
   <% @shows.each do |show| %>
-    <%= link_to show do %>
-      <h4>
-        <%= show.title %>
-        <span><br><%= show.genre %></span>
-      </h4>
+    <%= link_to show, :style => "background-image: url(#{show.image})" do %>
+      <div class="overlay">
+        <h4>
+          <%= show.title %>
+          <span><br><%= show.genre %></span>
+        </h4>
+      </div>
     <% end %>
   <% end %>
 

@@ -1,5 +1,7 @@
 class SeasonsController < ApplicationController
   before_action :set_season, only: [:show, :edit, :update, :destroy]
+  before_action :set_show, only: [:new]
+
 
   # GET /seasons
   # GET /seasons.json
@@ -61,14 +63,42 @@ class SeasonsController < ApplicationController
     end
   end
 
+  helper_method :user_has_viewed
+  def user_has_viewed(chapter, user)
+    cv = ChapterView.find_by(chapter_id: chapter, user_id: user)
+    if cv != nil
+      return true
+    else
+      return false
+    end
+  end
+
+  helper_method :find_chapter_view
+  def find_chapter_view(chapter, user)
+    cv = ChapterView.find_by(chapter_id: chapter, user_id: user)
+    if cv != nil
+      return cv
+    else
+      return false
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_season
       @season = Season.find(params[:id])
     end
 
+    def set_show
+      if (current_user.role == "Admin" and params[:show_id])
+        @show = Show.find(params[:show_id])
+      else
+        redirect_to :controller => 'shows', :action => 'index'
+      end
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def season_params
-      params.require(:season).permit(:title, :show, :year)
+      params.require(:season).permit(:title, :show_id, :year)
     end
 end

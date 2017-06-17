@@ -1,19 +1,31 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+<alert class="alert alert-info alert-full" ><%= notice %></alert>
+<% end %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @season.title %>
-</p>
+<div class="center-content">
+  <h1><%= @season.show.title %> <%= @season.title %></h1>
+  
+  <section class="grid grid-center">
+    <% @season.chapters.each do |chapter| %>
+      <div style="position: relative;">
+        <h4>
+          <%= chapter.title %>
+          <span><br><%= chapter.length %> min</span>
+        </h4>
+        <%- if user_has_viewed(chapter.id, current_user.id) %>
+        <%= link_to "Visto", find_chapter_view(chapter.id, current_user.id), method: :delete, class: "btn btn-green btn-float" %>
+        <% else %>
+        <%= link_to "Marcar como visto", {:controller => "chapter_views", :action => "create", :chapter_view => {chapter_id: chapter.id, user_id: current_user.id, review: ""}}, :method=>:post, class: "btn btn-blue btn-float" %>
+        <% end -%>
+      </div>
+    <% end %>
 
-<p>
-  <strong>Show:</strong>
-  <%= @season.show %>
-</p>
+    <span style="display:block;clear:both;"></span>
+  </section>
 
-<p>
-  <strong>Year:</strong>
-  <%= @season.year %>
-</p>
 
-<%= link_to 'Edit', edit_season_path(@season) %> |
-<%= link_to 'Back', seasons_path %>
+  <%- if current_user.role == "Admin" %>
+  <%= link_to 'Edit', edit_season_path(@season) %> |
+  <%= link_to "+ Agregar Capítulo", {:controller => "chapters", :action => "new", :season_id => @season.id}, class: "bright" %>
+  <% end -%>
+</div>

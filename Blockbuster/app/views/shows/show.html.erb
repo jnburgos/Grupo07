@@ -10,17 +10,30 @@
     <% end -%>
   </h1>
   <p class="show-subtitle">
-    <%= @show.genre %> | <%= @show.country %> | <%= @show.language %> | <%= @show.numberOfSeasons %> temporadas
+    <%= @show.genre %> | <%= @show.country %> | <%= @show.language %> | <%= @show.seasons.count %> temporadas
   </p>
-  <%= link_to "+ Añadir a mis series", {:controller => "shows", :action => "show", :subscribe => "1"}, class: "bright" %>
-  <div class="show-image"></div>
   <p class="show-subtitle">
     Actores: <%= @show.actors.map {|a| a.name}.join(", ").strip() %>
   </p>
   <p class="show-subtitle">
     Subtítulos: <%= @show.subtitles %>
   </p>
+  <%= link_to "+ Añadir a mis series", {:controller => "shows", :action => "show", :subscribe => "1"}, class: "bright" %>
+  <div class="show-image" style="background-image: url(<%= @show.image %>)"></div>
+  
 
+  <section class="grid grid-center">
+    <% @show.seasons.each do |season| %>
+      <%= link_to season do %>
+        <h4>
+          <%= season.title %>
+          <span><br><%= season.year %></span>
+        </h4>
+      <% end %>
+    <% end %>
+
+    <span style="display:block;clear:both;"></span>
+  </section>
 
   <p>
     <strong>Permission:</strong>
@@ -29,6 +42,7 @@
 
 
   <%- if current_user.role == "Admin" %>
-  <%= link_to 'Edit', edit_show_path(@show) %> |
+  <%= link_to 'Edit', edit_show_path(@show) %>
+  <%= link_to "+ Agregar Temporada", {:controller => "seasons", :action => "new", :show_id => @show.id}, class: "bright" %>
   <% end -%>
 </div>

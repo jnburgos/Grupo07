@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170525225425) do
+ActiveRecord::Schema.define(version: 20170617004249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,18 +29,19 @@ ActiveRecord::Schema.define(version: 20170525225425) do
   end
 
   create_table "chapter_views", force: :cascade do |t|
-    t.string   "user"
-    t.integer  "chapter"
     t.string   "review"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "chapter_id"
   end
 
   create_table "chapters", force: :cascade do |t|
     t.string   "length"
-    t.string   "season"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "season_id"
+    t.string   "title"
   end
 
   create_table "news", force: :cascade do |t|
@@ -53,12 +54,19 @@ ActiveRecord::Schema.define(version: 20170525225425) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "season_chapters", force: :cascade do |t|
+    t.integer "chapter_id"
+    t.integer "season_id"
+    t.index ["chapter_id"], name: "index_season_chapters_on_chapter_id", using: :btree
+    t.index ["season_id"], name: "index_season_chapters_on_season_id", using: :btree
+  end
+
   create_table "seasons", force: :cascade do |t|
     t.string   "title"
-    t.string   "show"
     t.string   "year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "show_id"
   end
 
   create_table "show_reviews", force: :cascade do |t|
@@ -81,6 +89,14 @@ ActiveRecord::Schema.define(version: 20170525225425) do
     t.integer  "numberOfSeasons"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "image"
+  end
+
+  create_table "showseasons", force: :cascade do |t|
+    t.integer "show_id"
+    t.integer "season_id"
+    t.index ["season_id"], name: "index_showseasons_on_season_id", using: :btree
+    t.index ["show_id"], name: "index_showseasons_on_show_id", using: :btree
   end
 
   create_table "subscriptions", id: false, force: :cascade do |t|

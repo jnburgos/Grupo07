@@ -1,5 +1,26 @@
-<h1>New Season</h1>
+<h1>Creando temporada para <%= @show.title %></h1>
 
-<%= render 'form', season: @season %>
+<div class="main-form">
+	<form class="new_season" id="new_season" action="/seasons" accept-charset="UTF-8" method="post">
+	<%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+	  <div class="field">
+	    <label for="season_title">Title</label>
+	    <input type="text" name="season[title]" id="season_title">
+	  </div>
+
+	  <div class="field">
+	    <input type="num" name="season[show_id]" id="season_show" value="<%= @show.id %>" hidden>
+	  </div>
+
+	  <div class="field">
+	    <label for="season_year">Year</label>
+	    <input type="text" name="season[year]" id="season_year">
+	  </div>
+
+	  <div class="actions">
+	    <input type="submit" name="commit" value="Create Season" data-disable-with="Create Season">
+	  </div>
+	</form>
+</div>
 
 <%= link_to 'Back', seasons_path %>
