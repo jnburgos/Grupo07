@@ -24,8 +24,9 @@
   </section>
 
 
-  <%- if current_user.role == "Admin" %>
-  <%= link_to 'Edit', edit_season_path(@season) %> |
+  <%- if user_signed_in? && current_user.role == "Admin" %>
+  Herramientas de Administrador 
+  <%= link_to 'Editar Temporada', edit_season_path(@season), class: "bright" %> |
   <%= link_to "+ Agregar Capítulo", {:controller => "chapters", :action => "new", :season_id => @season.id}, class: "bright" %>
   <% end -%>
 </div>

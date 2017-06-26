@@ -14,4 +14,10 @@
 
 	<br><br>
 	<p class="show-subtitle">En esta noticia: <%= @news.actor.name %></p>
+	<br><br>
+
+	<%- if user_signed_in? && current_user.role == "Admin" %>
+	Herramientas de Administrador 
+	<%= link_to 'Eliminar Noticia', @news, method: :delete, data: { confirm: 'Estás seguro?' }, class: "bright" %>
+	<% end -%>
 </div>

@@ -1,6 +1,5 @@
-<h1>Editing Season</h1>
+<h1>Editando <%= @season.show.title %> / <%= @season.title %></h1>
 
 <%= render 'form', season: @season, class: "main" %>
 
-<%= link_to 'Show', @season %> |
-<%= link_to 'Back', seasons_path %>
+<%= link_to 'Show', @season %>

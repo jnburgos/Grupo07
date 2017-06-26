@@ -39,7 +39,9 @@
   </section>
 
   <%- if user_signed_in? && current_user.role == "Admin" %>
-  <%= link_to 'Edit', edit_show_path(@show) %>
-  <%= link_to "+ Agregar Temporada", {:controller => "seasons", :action => "new", :show_id => @show.id}, class: "bright" %>
+  Herramientas de Administrador 
+  <%= link_to "+ Agregar Temporada", {:controller => "seasons", :action => "new", :show_id => @show.id}, class: "bright" %> |
+  <%= link_to 'Editar Serie', edit_show_path(@show), class: "bright" %> |
+  <%= link_to 'Eliminar Serie', @actor, method: :delete, data: { confirm: 'Estás seguro?' }, class: "bright" %>
   <% end -%>
 </div>

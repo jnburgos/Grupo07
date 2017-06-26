@@ -41,6 +41,9 @@
   <div style="clear:both"></div>
 </div>
 
-<%- if current_user.role == "Admin" %>
-<%= link_to "+ Agregar Noticia", {:controller => "news", :action => "new", :actor_id => @actor.id}, class: "bright" %>
+<%- if user_signed_in? && current_user.role == "Admin" %>
+Herramientas de administrador
+<%= link_to "+ Agregar Noticia", {:controller => "news", :action => "new", :actor_id => @actor.id}, class: "bright" %> | 
+<%= link_to 'Eliminar Actor', @actor, method: :delete, data: { confirm: 'Estás seguro?' }, class: "bright" %> | 
+<%= link_to 'Editar Actor', edit_actor_path(@actor), class: "bright" %>
 <% end -%>
