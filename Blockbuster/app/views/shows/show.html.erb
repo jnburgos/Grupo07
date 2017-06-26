@@ -5,9 +5,20 @@
 <div class="center-content">
   <h1>
     <%= @show.title %>
-    <%- if @show.rating %>
-    <% @show.rating + "&#9733;" %>
-    <% end -%>
+    <div class="demo pull-right">
+    <div class="rating">
+        <input type="radio" id="star5" name="rating" value="5" <%= is_checked(5) %>/><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+        <input type="radio" id="star4half" name="rating" value="4.5" <%= is_checked(4.5) %>/><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+        <input type="radio" id="star4" name="rating" value="4" <%= is_checked(4) %>/><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+        <input type="radio" id="star3half" name="rating" value="3.5" <%= is_checked(3.5) %>/><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+        <input type="radio" id="star3" name="rating" value="3" <%= is_checked(3) %>/><label class = "full" for="star3" title="Meh - 3 stars"></label>
+        <input type="radio" id="star2half" name="rating" value="2.5" <%= is_checked(2.5) %>/><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+        <input type="radio" id="star2" name="rating" value="2" <%= is_checked(2) %>/><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+        <input type="radio" id="star1half" name="rating" value="1.5" <%= is_checked(1.5) %>/><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+        <input type="radio" id="star1" name="rating" value="1" <%= is_checked(1) %>/><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+        <input type="radio" id="starhalf" name="rating" value="0.5" <%= is_checked(0.5) %>/><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+    </div>
+  </div>
   </h1>
   <p class="show-subtitle">
     <%= @show.genre %> | <%= @show.country %> | <%= @show.language %> | <%= @show.seasons.count %> temporadas
@@ -24,6 +35,7 @@
   <% elsif user_signed_in? %>
   <%= link_to "+ Añadir a mis series", {:controller => "shows", :action => "show", :subscribe => "1"}, class: "bright" %>
   <% end -%>
+
   <div class="show-image" style="background-image: url(<%= @show.image %>)"></div>
   <section class="grid grid-center">
     <% @show.seasons.each do |season| %>

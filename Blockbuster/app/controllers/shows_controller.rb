@@ -88,7 +88,15 @@ class ShowsController < ApplicationController
     end
   end
 
-
+  helper_method :is_checked
+  def is_checked(value)
+    rating = @show.rating
+    if rating >= value && rating < value + 0.5
+      return "checked"
+    else
+      return ""
+    end
+  end
 
   private
 

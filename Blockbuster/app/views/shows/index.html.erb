@@ -9,7 +9,7 @@
     <%= link_to subscription.show, :style => "background-image: url(#{subscription.show.image})" do %>
       <div class="overlay">
         <h4>
-          <%= subscription.show.title %>
+          <%= subscription.show.title %> | <%= subscription.show.rating %> &#9733;
           <span><br><%= subscription.show.genre %></span>
         </h4>
       </div>
@@ -33,7 +33,7 @@
     <%= link_to show, :style => "background-image: url(#{show.image})" do %>
       <div class="overlay">
         <h4>
-          <%= show.title %>
+          <%= show.title %> | <%= show.rating %> &#9733;
           <span><br><%= show.genre %></span>
         </h4>
       </div>

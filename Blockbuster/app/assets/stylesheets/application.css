@@ -14,6 +14,8 @@
  *= require_self
  */
 
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
 body {
  	width: 100%;
  	max-width: 100%;
@@ -354,4 +356,78 @@ div.grid > a > h4 span {
 	float: left;
 	width: 50%;
 }
+
+/****** Style Star Rating Widget *****/
+
+.demo .rating { 
+  border: none;
+  float: left;
+}
+
+.demo .rating > input { display: none; } 
+.demo .rating > label:before { 
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.demo .rating > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.demo .rating > label { 
+  color: #ddd; 
+ float: right; 
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.demo .rating > input:checked ~ label, /* show gold star when clicked */
+.demo .rating:not(:checked) > label:hover, /* hover current star */
+.demo .rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.demo .rating > input:checked + label:hover, /* hover current star when changing rating */
+.demo .rating > input:checked ~ label:hover,
+.demo .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.demo .rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+
+
+.case-editor .rating1 { 
+  border: none;
+  float: left;
+}
+
+.case-editor .rating1 > input { display: none; } 
+.case-editor .rating1 > label:before { 
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.case-editor .rating1 > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.case-editor .rating1 > label { 
+  color: #ddd; 
+ float: right; 
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.case-editor .rating1 > input:checked ~ label, /* show gold star when clicked */
+.case-editor .rating1:not(:checked) > label:hover, /* hover current star */
+.case-editor .rating1:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.case-editor .rating1 > input:checked + label:hover, /* hover current star when changing rating1 */
+.case-editor .rating1 > input:checked ~ label:hover,
+.case-editor .rating1 > label:hover ~ input:checked ~ label, /* lighten current selection */
+.case-editor .rating1 > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+
 
