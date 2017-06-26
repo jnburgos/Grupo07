@@ -2,24 +2,24 @@
 
 <div class="main-form">
 	<form class="new_chapter" id="new_chapter" action="/chapters" accept-charset="UTF-8" method="post">
-	<%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
-	  <div class="field">
-	    <input type="num" name="chapter[season_id]" id="chapter_season" value="<%= @season.id %>" hidden>
-	  </div>
+		<%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+		<div class="field">
+			<input type="num" name="chapter[season_id]" id="chapter_season" value="<%= @season.id %>" hidden>
+		</div>
 
-	  <div class="field">
-	    <label for="chapter_title">Título</label>
-	    <input type="text" name="chapter[title]" id="chapter_title">
-	  </div>
+		<div class="field">
+			<label for="chapter_title">Título</label>
+			<input type="text" name="chapter[title]" id="chapter_title">
+		</div>
 
-	  <div class="field">
-	    <label for="chapter_year">Duración</label>
-	    <input type="text" name="chapter[length]" id="chapter_length">
-	  </div>
+		<div class="field">
+			<label for="chapter_year">Duración</label>
+			<input type="text" name="chapter[length]" id="chapter_length">
+		</div>
 
-	  <div class="actions">
-	    <input type="submit" name="commit" value="Create chapter" data-disable-with="Create chapter">
-	  </div>
+		<div class="actions">
+			<input type="submit" name="commit" value="Crear Capítulo" data-disable-with="Crear Capítulo">
+		</div>
 	</form>
 </div>
 

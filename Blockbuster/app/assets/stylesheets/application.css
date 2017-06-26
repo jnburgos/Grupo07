@@ -221,13 +221,15 @@ h1 {
 }
 
 
-section.grid {
+section.grid,
+div.grid {
 	width: 100%;
 	height: auto;
 	margin: 50px auto;
 }
 
-section.grid > a {
+section.grid > a,
+div.grid > a {
 	width: calc(25% - 6px);
 	height: 150px;
 	background-color: #2C2C2C;
@@ -244,28 +246,33 @@ section.grid > a {
 
 }
 
-section.grid-center > a {
+section.grid-center > a,
+div.grid-center > a {
 	width: calc(50% - 6px);
 }
 
-section.grid-center > div {
+section.grid-center > div,
+div.grid > div {
 	width: calc(100%);
 	background-color: #2C2C2C;
 	margin: 3px 0;
 }
 
-section.grid > a:hover {
+section.grid > a:hover,
+div.grid > a:hover {
 	color: #fff;
 }
 
-section.grid a h4 {
+section.grid a h4,
+div.grid a h4 {
 	position: absolute;
 	left: 0px;
 	top: 60px;
 	text-align: left;
 }
 
-section.grid > a > h4 span {
+section.grid > a > h4 span,
+div.grid > a > h4 span {
 	font-size: 70%;
 }
 
@@ -327,5 +334,16 @@ a.btn-float {
 	top: 27px;
 	right: 20px;
 	min-width: 160px;
+}
+
+.two-col {
+	width: 100%;
+	height: auto;
+}
+
+.two-col > div:nth-child(1),
+.two-col > div:nth-child(2) {
+	float: left;
+	width: 50%;
 }
 

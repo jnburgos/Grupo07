@@ -1,5 +1,28 @@
-<h1>New News</h1>
+<h1>Creando Noticia para <%= @actor.name %></h1>
 
-<%= render 'form', news: @news %>
+<div class="main-form">
+	<form class="new_news" id="new_news" action="/news" accept-charset="UTF-8" method="post">
+		<%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+		<div class="field">
+		    <input type="num" name="news[actor_id]" id="news_actor" value="<%= @actor.id %>" hidden>
+		</div>
+		<div class="field">
+			<label for="news_title">Título</label>
+			<input type="text" name="news[title]" id="news_title">
+		</div>
 
-<%= link_to 'Back', news_path %>
+		<div class="field">
+			<label for="news_date">Fecha</label>
+			<input type="text" name="news[date]" id="news_date">
+		</div>
+
+		<div class="field">
+			<label for="news_content">Contenido</label>
+			<textarea type="text" name="news[content]" id="news_content" style="height: 160px;"></textarea>
+		</div>
+
+		<div class="actions">
+			<input type="submit" name="commit" value="Crear Noticia" data-disable-with="Crear Noticia">
+		</div>
+	</form>
+</div>

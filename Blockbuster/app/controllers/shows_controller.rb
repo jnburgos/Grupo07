@@ -20,8 +20,12 @@ class ShowsController < ApplicationController
   # GET /shows/1
   # GET /shows/1.json
   def show
+
     if params[:subscribe] == "1"
       add_show
+    end
+    if params[:unsubscribe] == "1"
+      remove_show
     end
   end
 
@@ -109,6 +113,14 @@ class ShowsController < ApplicationController
       unless current_user.shows.include?(@show)
         current_user.shows << @show
         flash[:notice] = '¡Te has suscrito a ' + @show.title + '!'
+        redirect_to :controller => 'shows', :action => 'index'
+      end
+    end
+
+    def remove_show
+      if current_user.shows.include?(@show)
+        current_user.shows.delete(@show)
+        flash[:notice] = '¡Te has desuscrito de ' + @show.title + '!'
         redirect_to :controller => 'shows', :action => 'index'
       end
     end

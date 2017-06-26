@@ -1,29 +1,17 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+<alert class="alert alert-info alert-full" ><%= notice %></alert>
+<% end %>
 
-<p>
-  <strong>Show:</strong>
-  <%= @news.show %>
-</p>
+<div class="center-content">
+	<h1 style="line-height: 1.5;"><%= @news.title %></h1>
+	<p class="show-subtitle">
+		<%= @news.date %>
+	</p>
+	<br><br><br>
+	<p class="show-subtitle">
+	  <%= @news.content %>
+	</p>
 
-<p>
-  <strong>Actor:</strong>
-  <%= @news.actor %>
-</p>
-
-<p>
-  <strong>Date:</strong>
-  <%= @news.date %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @news.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @news.content %>
-</p>
-
-<%= link_to 'Edit', edit_news_path(@news) %> |
-<%= link_to 'Back', news_path %>
+	<br><br>
+	<p class="show-subtitle">En esta noticia: <%= @news.actor.name %></p>
+</div>

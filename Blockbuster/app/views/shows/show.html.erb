@@ -18,10 +18,13 @@
   <p class="show-subtitle">
     Subtítulos: <%= @show.subtitles %>
   </p>
-  <%= link_to "+ Añadir a mis series", {:controller => "shows", :action => "show", :subscribe => "1"}, class: "bright" %>
-  <div class="show-image" style="background-image: url(<%= @show.image %>)"></div>
   
-
+  <%- if current_user.shows.include?(@show) %>
+  <%= link_to "X Desuscribirme de esta serie", {:controller => "shows", :action => "show", :unsubscribe => "1"}, class: "bright" %>
+  <% else %>
+  <%= link_to "+ Añadir a mis series", {:controller => "shows", :action => "show", :subscribe => "1"}, class: "bright" %>
+  <% end -%>
+  <div class="show-image" style="background-image: url(<%= @show.image %>)"></div>
   <section class="grid grid-center">
     <% @show.seasons.each do |season| %>
       <%= link_to season do %>
@@ -39,7 +42,6 @@
     <strong>Permission:</strong>
     <%= @show.permission %>
   </p>
-
 
   <%- if current_user.role == "Admin" %>
   <%= link_to 'Edit', edit_show_path(@show) %>

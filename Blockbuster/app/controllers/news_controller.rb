@@ -1,5 +1,6 @@
 class NewsController < ApplicationController
   before_action :set_news, only: [:show, :edit, :update, :destroy]
+  before_action :set_actor, only: [:new]
 
   # GET /news
   # GET /news.json
@@ -56,7 +57,7 @@ class NewsController < ApplicationController
   def destroy
     @news.destroy
     respond_to do |format|
-      format.html { redirect_to news_url, notice: 'New was successfully destroyed.' }
+      format.html { redirect_to news_index_path, notice: 'New was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -67,8 +68,16 @@ class NewsController < ApplicationController
       @news = New.find(params[:id])
     end
 
+    def set_actor
+      if (current_user.role == "Admin" and params[:actor_id])
+        @actor = Actor.find(params[:actor_id])
+      else
+        redirect_to :controller => 'shows', :action => 'index'
+      end
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def news_params
-      params.require(:news).permit(:show, :actor, :date, :title, :content)
+      params.require(:news).permit(:actor_id, :date, :title, :content)
     end
 end

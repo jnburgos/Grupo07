@@ -1,26 +1,46 @@
 <% if notice %>
 <alert class="alert alert-info alert-full" ><%= notice %></alert>
 <% end %>
-
-<div class="center-content">
-  <h1>
-    <%= @actor.name %>
-  </h1>
-  <br><br>
-  <p class="show-subtitle">
-    Series en las que ha actuado:
-  </p>
-  <section class="grid grid-center">
-    <% @actor.shows.each do |show| %>
-      <%= link_to show do %>
-        <h4>
-          <%= show.title %>
-          <span><br><%= show.genre %></span>
-        </h4>
+<h1>
+  <%= @actor.name %>
+</h1>
+<br><br>
+<div class="two-col">
+  <div>
+    <br><br>
+    <h2 style="margin-left:0;">Series en las que ha actuado</h2>
+    <section class="grid grid-center">
+      <% @actor.shows.each do |show| %>
+        <%= link_to show, :style => "background-image: url(#{show.image})" do %>
+          <div class="overlay">
+            <h4>
+              <%= show.title %>
+              <span><br><%= show.genre %></span>
+            </h4>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
 
-    <span style="display:block;clear:both;"></span>
-  </section>
-
+      <span style="display:block;clear:both;"></span>
+    </section>
+  </div>
+  <div>
+    <br><br>
+    <h2 style="margin-left:0;">Noticias</h2>
+    <section class="grid grid-center">
+      <% @news.each do |n| %>
+        <div style="position: relative;">
+          <h4>
+            <%= link_to n.title, n, :style => "color: #fff;" %>
+          </h4>
+        </div>
+      <% end %>
+      <span style="display:block;clear:both;"></span>
+    </section>
+  </div>
+  <div style="clear:both"></div>
 </div>
+
+<%- if current_user.role == "Admin" %>
+<%= link_to "+ Agregar Noticia", {:controller => "news", :action => "new", :actor_id => @actor.id}, class: "bright" %>
+<% end -%>

@@ -29,6 +29,15 @@ form.main input,
 	border: 1px solid #fff;
 }
 
+form.main textarea,
+.main-form form textarea {
+	width: 100%;
+	max-width: 100%;
+	padding: 7px;
+	font-size: 15px;
+	border: 1px solid #fff;
+}
+
 form.main input:focus,
 .main-form form input:focus {
 	outline: none;

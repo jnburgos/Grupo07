@@ -1,5 +1,7 @@
 class ActorsController < ApplicationController
   before_action :set_actor, only: [:show, :edit, :update, :destroy]
+  before_action :get_news, only: [:show]
+
 
   # GET /actors
   # GET /actors.json
@@ -64,6 +66,11 @@ class ActorsController < ApplicationController
         format.json { head :no_content }
       end
     end
+  end
+
+  helper_method :get_news
+  def get_news
+    @news = New.where(actor_id: @actor.id)
   end
 
   private
