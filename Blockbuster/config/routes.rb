@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :kids
   root 'welcome#index'
   # resources :sessions, only: [:new]
   # get 'welcome/index'

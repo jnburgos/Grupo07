@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :shows, through: :subscriptions
   has_many :show_reviews
   has_many :chapter_views
+  has_many :kids
 end

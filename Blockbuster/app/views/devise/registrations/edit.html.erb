@@ -1,55 +1,77 @@
-<h2>Editar cuenta</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <fieldset>
-
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true %>
-    </div>
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-    <% end %>
-    <br><br>
-    <div class="field">
-      <%= f.label :Nueva_Contraseña %> <i>(dejar en blanco si no deseas cambiarla)</i><br />
-      <%= f.password_field :password, autocomplete: "off" %>
-      <% if @minimum_password_length %>
-        <br />
-        <em>Mínimo <%= @minimum_password_length %> caracteres</em>
-      <% end %>
-    </div>
-    <br>
-    <div class="field">
-      <%= f.label :Confirmar_contraseña %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off" %>
-    </div>
-    <br><br>
-    <div class="field">
-      <%= f.label :facebook %><br />
-      <%= f.text_field :facebook, autocomplete: "off" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :rol %><br />
-      <%= f.text_field :role, autocomplete: "off" %>
-    </div>
-
-    <br><br><br>
-
-    <div class="field">
-      <%= f.label :contraseña_actual %> <i>(Debes ingresarla para validar los cambios)</i><br />
-      <%= f.password_field :current_password, autocomplete: "off" %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit "Actualizar Información" %>
-    </div>
-  </fieldset>
+<% if notice %>
+<alert class="alert alert-info alert-full" ><%= notice %></alert>
 <% end %>
+<h2>Ajustes</h2>
 <br><br>
-<h3>Eliminar Cuenta</h3>
-<p> <%= button_to "Eliminar cuenta", registration_path(resource_name), data: { confirm: "¿Estás seguro?" }, method: :delete %></p>
+<div class="two-col">
+  <div class="main-form">
+    <h3>Editar cuenta</h3>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= devise_error_messages! %>
+
+      <fieldset>
+
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true %>
+        </div>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
+        <br><br>
+        <div class="field">
+          <%= f.label :Nueva_Contraseña %> <i>(dejar en blanco si no deseas cambiarla)</i><br />
+          <%= f.password_field :password, autocomplete: "off" %>
+          <% if @minimum_password_length %>
+            <br />
+            <em>Mínimo <%= @minimum_password_length %> caracteres</em>
+          <% end %>
+        </div>
+        <br>
+        <div class="field">
+          <%= f.label :Confirmar_contraseña %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off" %>
+        </div>
+        <br><br>
+        <div class="field">
+          <%= f.label :facebook %><br />
+          <%= f.text_field :facebook, autocomplete: "off" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :rol %><br />
+          <%= f.text_field :role, autocomplete: "off" %>
+        </div>
+
+        <br><br><br>
+
+        <div class="field">
+          <%= f.label :contraseña_actual %> <i>(Debes ingresarla para validar los cambios)</i><br />
+          <%= f.password_field :current_password, autocomplete: "off" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Actualizar Información" %>
+        </div>
+      </fieldset>
+    <% end %>
+    <div class="actions">
+    <%= button_to "Eliminar cuenta", registration_path(resource_name), data: { confirm: "¿Estás seguro?" }, method: :delete, class: "btn-red" %>
+    </div>
+  </div>
+  <div>
+    <h3 style="margin-left:0;padding-left:0;margin-bottom:2px;">Mis cuentas asociadas</h3>
+    <%= link_to "+ Agregar cuenta asociada", new_kid_path(), class: "bright" %>
+    <br><br>
+    <section class="grid grid-center">
+      <% current_user.kids.each do |kid| %>
+        <div style="position: relative;">
+          <h4 style="display:inline-block;vertical-align: middle;"><%= kid.name %></h4>
+          <%= link_to "Eliminar", {:controller => "/kids", :action => "destroy", :id => kid.id}, data: { confirm: "¿Estás seguro?" }, method: :delete, class: "btn btn-red pull-right", :style => "margin: 33px 20px 0 0;" %>
+        </div>
+      <% end %>
+      <span style="display:block;clear:both;"></span>
+    </section>
+  </div>
+</div>

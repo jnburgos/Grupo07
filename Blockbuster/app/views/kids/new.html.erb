@@ -1,0 +1,19 @@
+<h1>Crear cuenta asociada</h1>
+
+<div class="main-form">
+	<form class="new_kid" id="new_kid" action="/kids" accept-charset="UTF-8" method="post">
+		<%= hidden_field_tag :authenticity_token, form_authenticity_token -%>
+		<div class="field">
+			<input type="num" name="kid[user_id]" id="user_id" value="<%= current_user.id %>" hidden>
+		</div>
+
+		<div class="field">
+			<label for="kid_name">Nombre</label>
+			<input type="text" name="kid[name]" id="kid_name">
+		</div>
+
+		<div class="actions">
+			<input type="submit" name="commit" value="Crear Cuenta Asociada" data-disable-with="Crear Cuenta Asociada">
+		</div>
+	</form>
+</div>

@@ -291,7 +291,7 @@ div.grid > a > h4 span {
 	background-color: rgba(0,0,0,0.30);
 }
 
-a.btn {
+.btn {
 	font-size: 10px;
 	text-transform: uppercase;
 	font-weight: bolder;
@@ -307,34 +307,42 @@ a.btn {
 	text-align: center;
 }
 
-a.btn:hover {
+.btn:hover {
 	color: #fff;
 }
 
-a.btn-green {
+.btn-green {
 	background-color: #6BBC63;
 	color: #fff;
 }
 
-a.btn-green:hover {
+.btn-green:hover {
 	background-color: #86CB7F;
 }
 
-a.btn-blue {
+.btn-blue {
 	background-color: #5FC2FA;
 	color: #fff;
 }
 
-a.btn-blue:hover {
+.btn-blue:hover {
 	background-color: #5FD5FA;
 }
 
-a.btn-float {
+.btn-float {
 	position: absolute;
 	top: 27px;
 	right: 20px;
 	min-width: 160px;
 }
+
+.btn-red {
+  	color: #fff !important;
+  	background-color: #E40023 !important;
+}
+.btn-red:hover {
+	background-color: #CB001F !important;
+} 
 
 .two-col {
 	width: 100%;

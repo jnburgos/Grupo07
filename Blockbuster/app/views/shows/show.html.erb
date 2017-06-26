@@ -19,9 +19,9 @@
     Subtítulos: <%= @show.subtitles %>
   </p>
   
-  <%- if current_user.shows.include?(@show) %>
+  <%- if user_signed_in? && current_user.shows.include?(@show) %>
   <%= link_to "X Desuscribirme de esta serie", {:controller => "shows", :action => "show", :unsubscribe => "1"}, class: "bright" %>
-  <% else %>
+  <% elsif user_signed_in? %>
   <%= link_to "+ Añadir a mis series", {:controller => "shows", :action => "show", :subscribe => "1"}, class: "bright" %>
   <% end -%>
   <div class="show-image" style="background-image: url(<%= @show.image %>)"></div>
@@ -38,12 +38,7 @@
     <span style="display:block;clear:both;"></span>
   </section>
 
-  <p>
-    <strong>Permission:</strong>
-    <%= @show.permission %>
-  </p>
-
-  <%- if current_user.role == "Admin" %>
+  <%- if user_signed_in? && current_user.role == "Admin" %>
   <%= link_to 'Edit', edit_show_path(@show) %>
   <%= link_to "+ Agregar Temporada", {:controller => "seasons", :action => "new", :show_id => @show.id}, class: "bright" %>
   <% end -%>
