@@ -430,4 +430,36 @@ div.grid > a > h4 span {
 .case-editor .rating1 > label:hover ~ input:checked ~ label, /* lighten current selection */
 .case-editor .rating1 > input:checked ~ label:hover ~ label { color: #FFED85;  } 
 
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
 
+table thead {
+	background-color: #fff;
+	color: #000;
+	font-weight: bold;
+}
+
+table thead th {
+	padding: 15px auto;
+}
+
+table tbody td {
+	padding: 10px 10px;
+}
+
+table tbody tr:nth-child(even) {
+	background-color: #424242;
+}
+
+table td,
+table th {
+	border: none;
+	padding: 10px 10px;
+	text-align: left;
+}
+
+table tr {
+	padding: 10px 10px;
+}
