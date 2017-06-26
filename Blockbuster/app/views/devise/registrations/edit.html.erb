@@ -1,7 +1,8 @@
 <% if notice %>
 <alert class="alert alert-info alert-full" ><%= notice %></alert>
 <% end %>
-<h2>Ajustes</h2>
+<br>
+<h2>Mi Cuenta</h2>
 <br><br>
 <div class="two-col">
   <div class="main-form">
@@ -38,7 +39,7 @@
           <%= f.label :facebook %><br />
           <%= f.text_field :facebook, autocomplete: "off" %>
         </div>
-
+        <br><br>
         <div class="field">
           <%= f.label :rol %><br />
           <%= f.text_field :role, autocomplete: "off" %>
@@ -71,6 +72,18 @@
           <%= link_to "Eliminar", {:controller => "/kids", :action => "destroy", :id => kid.id}, data: { confirm: "¿Estás seguro?" }, method: :delete, class: "btn btn-red pull-right", :style => "margin: 33px 20px 0 0;" %>
         </div>
       <% end %>
+      <span style="display:block;clear:both;"></span>
+    </section>
+
+    <br><br>
+
+    <h3 style="margin-left:0;padding-left:0;margin-bottom:2px;">Estadísticas</h3>
+    <section class="grid grid-center">
+      <h4 style="margin-left: 0;padding-left:0;">Tiempo total invertido viendo series</h4>
+      <div style="position: relative;">
+        <h4 style="display:inline-block;vertical-align: middle;"><%= current_user.time_spent %> 316 Minutos</h4>
+        <%= link_to "Enviar por email", {:controller => "/kids", :action => "destroy", :id => "1"}, data: { confirm: "¿Estás seguro?" }, method: :delete, class: "btn btn-blue pull-right", :style => "margin: 33px 20px 0 0;" %>
+      </div>
       <span style="display:block;clear:both;"></span>
     </section>
   </div>

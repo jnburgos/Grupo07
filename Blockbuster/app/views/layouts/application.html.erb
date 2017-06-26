@@ -18,7 +18,7 @@
       </a>
       <% if user_signed_in?  %>
       <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, class: "pull-right" %>
-      <a href="/users/edit" class="pull-right">Ajustes</a>
+      <a href="/users/edit" class="pull-right">Mi Cuenta</a>
       <% else %>
       <%= link_to "Iniciar sesión", new_user_session_path, method: :get, class: "pull-right" %>
       <%= link_to "Crear cuenta", new_user_registration_path, method: :get, class: "pull-right" %>
